@@ -1,0 +1,43 @@
+The trained model has 10 topics.
+Perplexity score: -8.272083156569717.
+Coherence score: 0.4165871298311397.
+The topics of the model are: 
+[(0,
+  '0.068*"cancer" + 0.043*"hpv" + 0.025*"cervical" + 0.018*"girl" + '
+  '0.015*"woman" + 0.014*"boy" + 0.012*"infection" + 0.011*"programme" + '
+  '0.010*"prevent" + 0.010*"man"'),
+ (1,
+  '0.030*"launch" + 0.021*"issue" + 0.020*"exemption" + 0.017*"livestock" + '
+  '0.014*"contain" + 0.013*"doc" + 0.012*"civil" + 0.011*"gp" + 0.011*"mark" + '
+  '0.011*"essential"'),
+ (2,
+  '0.035*"evil" + 0.024*"surveillance" + 0.021*"farm" + 0.021*"busy" + '
+  '0.019*"lower" + 0.019*"registry" + 0.017*"ethic" + 0.016*"personnel" + '
+  '0.015*"finish" + 0.013*"evening"'),
+ (3,
+  '0.020*"flu" + 0.012*"rabie" + 0.012*"child" + 0.012*"get" + 0.009*"dog" + '
+  '0.007*"year" + 0.006*"say" + 0.006*"risk" + 0.006*"free" + 0.006*"school"'),
+ (4,
+  '0.051*"star" + 0.028*"destroy" + 0.027*"employee" + 0.023*"resistance" + '
+  '0.016*"plant" + 0.015*"board" + 0.015*"cute" + 0.014*"ovarian" + '
+  '0.014*"partnership" + 0.014*"blog"'),
+ (5,
+  '0.034*"dengue" + 0.020*"learntherisk" + 0.017*"tax" + 0.016*"miserable" + '
+  '0.014*"cloudy" + 0.014*"accuse" + 0.013*"particular" + 0.012*"protocol" + '
+  '0.012*"wellness" + 0.011*"uphold"'),
+ (6,
+  '0.015*"child" + 0.011*"people" + 0.010*"get" + 0.010*"rate" + '
+  '0.010*"measle" + 0.008*"make" + 0.007*"disease" + 0.007*"health" + '
+  '0.007*"year" + 0.006*"need"'),
+ (7,
+  '0.044*"sell" + 0.037*"store" + 0.033*"double" + 0.026*"scam" + '
+  '0.014*"restrict" + 0.013*"station" + 0.010*"phenomenon" + '
+  '0.008*"identification" + 0.006*"behalf" + 0.006*"thankful"'),
+ (8,
+  '0.036*"neuter" + 0.027*"willing" + 0.020*"premature" + 0.016*"earther" + '
+  '0.014*"traditional" + 0.012*"french" + 0.011*"equine" + 0.010*"homeopathy" '
+  '+ 0.009*"convinced" + 0.008*"gmo"'),
+ (9,
+  '0.068*"bite" + 0.032*"cold" + 0.026*"storage" + 0.023*"touch" + '
+  '0.022*"speech" + 0.021*"bar" + 0.019*"quick" + 0.019*"draw" + '
+  '0.015*"section" + 0.014*"heavy"')]
