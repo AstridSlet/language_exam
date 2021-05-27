@@ -22,7 +22,7 @@ Below is an illustration of how these word sequences look:
 
 
 
-<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="400" height="250"></a> 
+<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="400" height="300"></a> 
 
 
 
@@ -32,7 +32,7 @@ Thus, the sentence ‘hold it and it holds your breath’ is made into a list of
 After creating the words sequences, the sequences need to be padded with 0’s so the input data points to the model all have the same dimensions. Below is an illustration of how the sequences look when they are padded: 
 
 
-<p align="center"> <img src="readme_images/padding_seqs.png" alt="Logo" width="800" height="200"></a> 
+<p align="center"> <img src="readme_images/padding_seqs.png" alt="Logo" width="700" height="180"></a> 
 
 4. Split sequences in X and Y and train model 
 When the sequences are padded in this way, where all the 0’s are added in the beginning, one can utilize the fact that the last word (to the very right) can be picked out using negative indexing. These numbers are the Y values of the model. The remainder indices (all the numbers to the left) can then be used as the X values. As described above, the model then has to learn that when seeing X (a series of words) the most likely next word is Y. It is these X- and Y- values that are fed to the model. 
