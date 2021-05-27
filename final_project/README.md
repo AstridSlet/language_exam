@@ -76,19 +76,21 @@ As described above, the model is trained on n_gram sequences made from the poems
 When looking at the output of two trial rounds with the themes football+love and nature+dance it seems that the model is indeed able to learn a specific writing style. Clearly, the model is choosing different kinds of words even when it is only trained for one epoch:
 
   
-  <p align="center"> <img src="readme_images/football_love_1epoch.png" alt="Logo" width="400" height="400"></a>   <a align="center"> <img src="readme_images/dance_nature_1epoch.png" alt="Logo" width="400" height="400"> <p>
+  <p align="center"> <img src="readme_images/football_love_1epoch.png" alt="Logo" width="500" height="400"></a>   <a align="center"> <img src="readme_images/dance_nature_1epoch.png" alt="Logo" width="500" height="400"> <p>
   <p align="center"><em> Output poem, themes: football+love, 1 epoch &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Output poem, themes: nature+dance, 1 epoch </em><p/>
   
   
-  
-  
+  &nbsp;
+  &nbsp;
+
   
   Additionally, when comparing the output from running the model with 1 epoch vs. 10 or 40 epochs it is clear that the model is learning about more and more words and how they appear in text through model training: 
   
-  
+  &nbsp;
+  &nbsp;
 
   
-  <p align="center"> <img src="readme_images/football_love_40epochs.png" alt="Logo" width="400" height="400"></a>   <a align="center"> <img src="readme_images/dance_nature_10epochs.png" alt="Logo" width="400" height="400"> <p>
+  <p align="center"> <img src="readme_images/football_love_40epochs.png" alt="Logo" width="500" height="400"></a>   <a align="center"> <img src="readme_images/dance_nature_10epochs.png" alt="Logo" width="500" height="400"> <p>
   <p align="center"><em> Output poem, themes: football+love, 40 epochs &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Output poem, themes: nature+dance, 10 epochs  </em><p/>
   
   
