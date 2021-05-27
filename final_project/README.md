@@ -10,10 +10,10 @@ The script makes use of an open-source data set, which consists in 145 folders t
 
 
 ## Methods
-1. Loading texts and tokenizing text
+### Loading texts and tokenizing text &nbsp;
 When the script is run the poems with the two themes specified via command line are loaded from their folders. The poems are first gathered in one long text corpus with the load_poems() function. Then the corpus is split into individual text lines with lower case words, and these poem lines are then tokenized using Keras’ Tokenizer() in the tokenize_poems() function (returning a max of 5000 individual tokens). 
 
-2. Making text sequences
+### Making text sequences &nbsp;
 The preprocessed poem lines are then made into sequences of words, with the create_sequences() function: 1) Each line of the corpus is made into a token list using the indices from the token index dictionary constructed during tokenization. 2) Each token is then made into a n_gram_sequences. 
 
 An intuitive understanding of the n-gram model is as follows: Out of the times you saw the history h, how many times did the word w follow it? E.g. out of all the time you see the word "I" how many times do the word "love" follow it? And out of all the times you see the words "I love" how many times does the word "you" follow them? (Kapadia, 2019).
@@ -30,7 +30,7 @@ Below is an illustration of how these word sequences look:
 
 Thus, the sentence ‘hold it and it holds your breath’ is made into a list of word indices (see the line just below). And the full line of word indices is then split into smaller sublists where one word (word-index) is added one by one to create a new sequence. If the model is good enough it can learn during model training to predict the next word index that is the most likely to be added to a sequence based on these word sequences. 
 
-3. Pad sequences
+### Pad sequences &nbsp;
 After creating the words sequences, the sequences need to be padded with 0’s so the input data points to the model all have the same dimensions. Below is an illustration of how the sequences look when they are padded: 
 
 &nbsp;
@@ -41,7 +41,7 @@ After creating the words sequences, the sequences need to be padded with 0’s s
 &nbsp;
 &nbsp;
 
-4. Split sequences in X and Y and train model 
+### Split sequences in X and Y and train model &nbsp; 
 When the sequences are padded in this way, where all the 0’s are added in the beginning, one can utilize the fact that the last word (to the very right) can be picked out using negative indexing. These numbers are the Y values of the model. The remainder indices (all the numbers to the left) can then be used as the X values. As described above, the model then has to learn that when seeing X (a series of words) the most likely next word is Y. It is these X- and Y- values that are fed to the model. 
 The model used to train the poem-generator is a convolutional neural network with an input layer, an embedding layer that learns an embedding for all of the words in the poem corpus, a LSTM layer with 150 nodes, which is well-suited for predicting time-series data like predicting the order of words in poems, and a dense output layer (n.nodes = n.words in index dictionary). The model architecture of each trained model is saved in the output folder. An example output can be seen here:
 
@@ -53,7 +53,7 @@ The model used to train the poem-generator is a convolutional neural network wit
 &nbsp;
 &nbsp;
 
-5. Create poem
+### Create poem &nbsp;
 When the model is trained, it can be used to generate new words when given a set of initiator words, from which it can predict the most likely next word. For this script I have used a list of words/word pairs that are commonly used to initiate sentences. These words are saved as a txt file in the utils folder (the original list can be found [_here_](https://owlcation.com/academia/Words-to-Use-in-Starting-Sentences)). Based on the number of lines the poem needs to have (specified by the user of the poem-generator) the script samples this number of sentence initiators and generates a poem line with a given number of words (also specified via command line). The generated poem is saved as a txt file in the output folder. 
 
 
