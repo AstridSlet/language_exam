@@ -22,7 +22,7 @@ Below is an illustration of how these word sequences look:
 
 
 
-<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="400" height="2500"></a> 
+<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="400" height="250"></a> 
 
 
 
