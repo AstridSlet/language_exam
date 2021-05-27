@@ -87,7 +87,7 @@ When run with default settings the script will create five poems about nature an
 &nbsp;
 &nbsp;
 
-<p align="center"> <img src="readme_images/themes_table.png" alt="Logo" width="1000" height="700"></a> 
+<p align="center"> <img src="readme_images/themes_table.png" alt="Logo" width="900" height="600"></a> 
 
 &nbsp;
 &nbsp;
