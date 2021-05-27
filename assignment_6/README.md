@@ -30,7 +30,7 @@ For this assignment a single command line scripts was created:
     * "--embed_dim", required=False, help="Dimensions for storing pretrained word embeddings from glove", type=int, default = 50
     * "--path_glove_embedding", required=False, help="Path to the pretrained word embedding to use from glove", type=str, default = os.path.join("..","glove","glove.6B.50d.txt")
 
-If you have successfully cloned this repository and created the virtual environment lang_venv you can run the preprocessing script from command line with:
+If you have successfully cloned this repository and created the virtual environment lang_venv you can run the script from command line with:
 
 ```
 $ cd language_exam

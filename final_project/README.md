@@ -5,7 +5,7 @@
 For this final project I have chosen to work with text generation. More specifically, I have chosen to create a poem-generator, that can create theme-based poems (of varying quality…) using machine learning techniques. The project is inspired by a machine learning course by Keras (Moroney, 2020), which I have developed on. 
 
 The script makes use of an open-source data set, which consists in 145 folders that each holds approximately 100 poems with a specific topic. The data set can be found
-[_here_](https://www.kaggle.com/michaelarman/poemsdataset). From these 145 topics the user of the poem-generator can pick two themes for the poem that will be generated. In addition to picking two themes the user has to pick how many lines the poem should have and how many words there should be in each line.  
+[_here_](https://www.kaggle.com/michaelarman/poemsdataset). From these 145 topics the user of the poem-generator can pick two themes. The poems of these themes are used to train the poem-generator. In addition to picking two themes the user can specify how many lines the poem should have, how many words there should be in each line and how many poems should be generated.  
 
 
 
@@ -16,7 +16,7 @@ When the script is run the poems with the two themes specified via command line 
 &nbsp;
 
 #### 2. Making text sequences &nbsp;
-The preprocessed poem lines are then made into sequences of words, with the create_sequences() function: 1) Each line of the corpus is made into a token list using the indices from the token index dictionary constructed during tokenization. 2) Each token is then made into a n_gram_sequences. 
+The preprocessed poem lines are then made into sequences of words, with the create_sequences() function: 1) Each line of the corpus is made into a token list using the indices from the token index dictionary constructed during tokenization. 2) Each token is then made into n_gram_sequences. 
 
 An intuitive understanding of the n-gram model is as follows: Out of the times you saw the history h, how many times did the word w follow it? E.g. out of all the time you see the word "I" how many times do the word "love" follow it? And out of all the times you see the words "I love" how many times does the word "you" follow them? (Kapadia, 2019).
 
@@ -30,7 +30,7 @@ Below is an illustration of how these word sequences look:
 &nbsp;
 &nbsp;
 
-Thus, the sentence ‘hold it and it holds your breath’ is made into a list of word indices (see the line just below). And the full line of word indices is then split into smaller sublists where one word (word-index) is added one by one to create a new sequence. If the model is good enough it can learn during model training to predict the next word index that is the most likely to be added to a sequence based on these word sequences. 
+Thus, the sentence ‘hold it and it holds your breath’ is made into a list of word indices (see the line just below the actual sentence in the output). And the full line of word indices is then split into smaller sublists where one word (word-index) is added one by one to create a new sequence. If the model is good enough it can learn during model training to predict the next word index that is the most likely to be added to a sequence based on these word sequences. 
 
 &nbsp;
 
@@ -47,6 +47,8 @@ After creating the words sequences, the sequences need to be padded with 0’s s
 
 #### 4. Split sequences in X and Y and train model &nbsp; 
 When the sequences are padded in this way, where all the 0’s are added in the beginning, one can utilize the fact that the last word (to the very right) can be picked out using negative indexing. These numbers are the Y values of the model. The remainder indices (all the numbers to the left) can then be used as the X values. As described above, the model then has to learn that when seeing X (a series of words) the most likely next word is Y. It is these X- and Y- values that are fed to the model. 
+&nbsp;
+
 The model used to train the poem-generator is a convolutional neural network with an input layer, an embedding layer that learns an embedding for all of the words in the poem corpus, a LSTM layer with 150 nodes, which is well-suited for predicting time-series data like predicting the order of words in poems, and a dense output layer (n.nodes = n.words in index dictionary). The model architecture of each trained model is saved in the output folder. An example output can be seen here:
 
 &nbsp;
@@ -58,12 +60,12 @@ The model used to train the poem-generator is a convolutional neural network wit
 &nbsp;
 
 #### 5. Create poem &nbsp;
-When the model is trained, it can be used to generate new words when given a set of initiator words, from which it can predict the most likely next word. For this script I have used a list of words/word pairs that are commonly used to initiate sentences. These words are saved as a txt file in the utils folder (the original list can be found [_here_](https://owlcation.com/academia/Words-to-Use-in-Starting-Sentences)). Based on the number of lines the poem needs to have (specified by the user of the poem-generator) the script samples this number of sentence initiators and generates a poem line with a given number of words (also specified via command line). The generated poem is saved as a txt file in the output folder. 
+When the model is trained, it can be used to generate sentences. To initiate this word generation, the model has to havea set of "initiator words", i.e. simply one or two words from which it can predict the most likely next word. To make the model initiate sentences I have chosen to create a list of "initiator words" that the script can randomly sample from, when it has to initiate a new sentence. I did this to make the model initiate sentences in a "unbiased" way to see if these very normal words would still make the model write with a certain style that it had learned from the poems it was trained on. To create the list of initiator words I used a list of words/word pairs that are commonly used to begin sentences in English. The initiator words are saved as a txt file in the utils folder (the original list can be found [_here_](https://owlcation.com/academia/Words-to-Use-in-Starting-Sentences)). Based on the number of lines the poem needs to have (specified by the user of the poem-generator) the script samples this number of sentence initiators and for each initiator it generates a poem line with a given number of words. The generated poem is saved as a txt file in the output folder. 
 
 
 ## Usage
 For this assignment a single command line scripts was created: 
-* Poem-generator.py
+* poem-generator.py
     * "-t1", "--theme1", type = str, required=False, help="Theme 1 of your poem.", default="football"
     * "-t2", "--theme2", type = str, required=False,  help="Theme 2 of your poem.", default="love" 
     * "-l", "--lines", type = int, required=False, help="Number of lines in your poem.", default = 12
@@ -71,7 +73,7 @@ For this assignment a single command line scripts was created:
     * "-np", "--n_poems", type = int, required=False, help="Number of poems you want.", default = 5
     * "-e", "--epochs", type = int, required=False, help="Number of epochs for model training.", default = 10
 
-If you have successfully cloned this repository and created the virtual environment lang_venv you can run the preprocessing script from command line with:
+If you have successfully cloned this repository and created the virtual environment lang_venv you can run the script from command line with:
 
 
 ```
@@ -82,7 +84,7 @@ $ python poem-generator.py
 
 ```
 
-When run with default settings the script will create five poems about nature and dance, that all have 12 lines of each 6 words. The default model is trained with 10 epochs. As can be seen above you can specify another number of poems, number of lines and number of words per line in the poems. Additionally, if you wish to pick your own themes, you can pick two themes from the table below and specify them via command line:
+When run with default settings the script will create five poems about nature and dance, that all have 12 lines of each 6 words. The default model is trained with 10 epochs. As can be seen above from the command line arguments, you can specify another number of poems, number of lines and number of words per line in the poems. Additionally, if you wish to pick your own themes, you can pick two themes from the table below and specify them via command line:
 
 &nbsp;
 &nbsp;
@@ -94,7 +96,7 @@ When run with default settings the script will create five poems about nature an
 
 
 ## Discussion of results
-As described above, the model is trained on n_gram sequences made from the poems of the two themes specified by the user. By feeding the model these sequences, it is the hope that the model can learn what word is the most likely to follow certain words and, in this way, begin to write sentences that make sense. And as the model is trained on poems with specific themes, the “writing style” of the model will hopefully reflect the themes of the poems it was trained on. 
+As described above, the model is trained on n_gram sequences made from the poems of the two themes specified by the user. By feeding the model these sequences, it is the hope that the model can learn what word is the most likely to follow a sequence of words and, in this way, begin to write sentences that make sense. And as the model is trained on poems with specific themes, the “writing style” of the model will hopefully reflect the themes of the poems it was trained on. 
 
 When looking at the output of two trial rounds with the themes football+love and nature+dance it seems that the model is indeed able to learn a specific writing style. Clearly, the model is choosing different kinds of words even when it is only trained for one epoch:
 
@@ -109,7 +111,7 @@ When looking at the output of two trial rounds with the themes football+love and
   &nbsp;
 
   
-  Additionally, when comparing the output from running the model with 1 epoch vs. 10 or 40 epochs it is clear that the model is learning about more and more words and how they appear in text through model training: 
+  From the poems it is however clear that with this little training, the model is only able to pick out ‘buzz words’ and the repeat these no matter what words it is initated with. However, when increasing the number of epochs, the model is beginning to learn more and more words from the themes it is trained on: 
   
   &nbsp;
   &nbsp;
@@ -121,9 +123,11 @@ When looking at the output of two trial rounds with the themes football+love and
   &nbsp;
   &nbsp;
   
-  Still, it is clear from the above that the model is mostly learning ‘buzz’ words from each theme and is only slightly improving its understanding of how words are related in a sentence. This makes sense as the model is only learning from approximately 200 poems. If one had used a pretrained word-embedding holding information about syntax to generate sentences, one could have had sentences with better syntax. Still, as it was the intention to deliberately bias the model towards using certain words, I found that it was more fun to simply let the model learn is learn from these smaller word corpora. 
+ While it is clear, that the model is still mostly learning about common words, it seems that the model is slightly improving its understanding of how words are related in a sentence. Still, the syntactic struggles of the model makes sense as the model is only learning from approximately 200 poems, that might even have very different sentence structures due to differences in writing stily. As it was the intention to deliberately bias the model towards using certain words, I found that it was fun to simply let the model learn is learn from these smaller word corpora, but it could also be fun to implement some kind og pretrained embedding in the model architecture, that could help the model in terms of syntax and then just train a part of the model on the thematic poems. 
 
-Looking at the plots of model training history of the love+football model trained for 40 epochs shows that the model is learning, but also that the training accuracy is not improving substantially after 10/15 epochs. To have a better model it would naturally be of use to have more poems in each poem category. Possibly, one could combine the poems some of the categories like ‘romance’ and ‘love’ into a single theme folder to feed the model with more data.  
+&nbsp;
+
+Looking at the plots of model training history of the love+football model trained for 40 epochs shows that the model is learning, but also that the training accuracy is not improving substantially after 10/15 epochs. To have a better model it would naturally be of use to have more poems in each poem category. Possibly, one could combine the poems from some of the categories like ‘romance’ and ‘love’ into a single theme folder to feed the model with more data.  
 
 &nbsp;
 &nbsp;
