@@ -2,7 +2,7 @@
 
 ## Repo structure
 
-This repository includes five projects including four class assignments developed during the course and one final project. The five four projects largely has the following folder-structure:
+This repository includes five projects including four class assignments developed during the course and one final project. The five four projects has the following folder-structure:
 
 | Folder | Description|
 |--------|:-----------|
@@ -11,6 +11,7 @@ This repository includes five projects including four class assignments develope
 ```/data```| data folder holding sample datasets used for the project.
 ```/utils```| folder holding utility functions used in main scripts.
 ```/output``` | output folder holding an example output, produced when running the script with default settings.
+```/readme_images``` | Images used in the readme files.
 
 
 ## Technicalities

@@ -52,14 +52,9 @@ $ cd assignment_5/src
 $ python -W ignore::DeprecationWarning LDA_model.py
 ```
 
-The script initially tries to find the optimal number of topics based on coherence score of the topics. The model therefore outputs to the output folder:
-1. A visualization the coherence scores when the model has different number of topics (out/topic_number_plot.jpg).
-2. A textfile with the coherence scores for the different number of topics (out/topic_number_coherence_val.txt).
+The script initially tries to find the optimal number of topics based on coherence score of the topics. The model therefore outputs to the output folder: 1) A visualization the coherence scores when the model has different number of topics (out/topic_number_plot.jpg). 2) A txt file with the coherence scores for the different number of topics (out/topic_number_coherence_val.txt).
 
-The script automatically chooses the number of topics which yields the highest coherence score and trains a model. This model training will produce:
-
-1. A plot of the prevalence of the different topics over time for the trained model (out/topics_over_time.jpg).
-2.  A textfile (final_output.txt) with the number of topics, the coherence and perplexity scores of the model, and the features of the different topics.
+The script automatically chooses the number of topics which yields the highest coherence score and trains a model. This model training will produce: 1) A plot of the prevalence of the different topics over time for the trained model (out/topics_over_time.jpg). 2) A txt file (final_output.txt) with the number of topics, the coherence and perplexity scores of the model, and the features of the different topics.
 
 
 ## Discussion of results
