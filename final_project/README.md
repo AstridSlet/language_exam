@@ -128,7 +128,7 @@ Looking at the plots of model training history of the love+football model traine
 &nbsp;
 &nbsp;
   
-  <p align="center"> <img src="readme_images/training_historylove_football.png" alt="Logo" width="600" height="600"></a> 
+  <p align="center"> <img src="readme_images/training_historylove_football.png" alt="Logo" width="600" height="400"></a> 
   
   &nbsp;
   &nbsp;
