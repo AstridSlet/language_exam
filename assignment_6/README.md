@@ -43,14 +43,8 @@ $ python got-cnn.py
 ## Discussion of results
 As can be seen from the classification reports from the output folder, neither of the models performed very well. The macro F1 score of the baseline model was 0.26 while it was actually even worse with a macro F1 of 0.18 for the CNN. Thus, despite using a pretrained embedding and a more sophisticated model architecture, this model was not able to find any patterns in the data which distinguish the eight seasons of GOT. When looking at the amount of data for each class, it is evident, that this data set is imbalanced:
 
-<br />
-<p align="center">
-  <a href="https://github.com/AstridSlet/language_exam/blob/main/assignment_6">
-    <img src="/readme_image/n_datapoints_outputclasses.png", width="400" height="400">
-  </a>
-  <h2 align="center">Logistic Regression and Neural Network benchmarking</h2>
   
-  <p align="center"> <img src="readme_image/n_datapoints_outputclasses.png" alt="Logo" width="350" height="350"></a> 
+  <p align="center"> <img src="readme_image/n_datapoints_outputclasses.png" alt="Logo" width="500" height="350"></a> 
 
 Thus, I also experimented with balancing the data set (see the commented-out lines in script) using the function balance_data(), but as this made performance even worse both for the baseline model (F1 = 0.22) and for the CNN (F1 = 0.15), I decided to leave this step out again. For the reference, classification reports for the balanced data set can also be found in the output folder. 
 The lower performance could be attributed to so many data points being filtered out when balancing with the number of the smallest class. One could possibly also experiment with a balancing method, with resampling of data points for the classes with fewer data points (also called upsampling). Another possible extension of this analysis would be to stratify the training and the testing data by the output classes, to ensure that the distribution of data points from each class was the same in the training and the test set.  
