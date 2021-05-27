@@ -43,11 +43,14 @@ $ python got-cnn.py
 ## Discussion of results
 As can be seen from the classification reports from the output folder, neither of the models performed very well. The macro F1 score of the baseline model was 0.26 while it was actually even worse with a macro F1 of 0.18 for the CNN. Thus, despite using a pretrained embedding and a more sophisticated model architecture, this model was not able to find any patterns in the data which distinguish the eight seasons of GOT. When looking at the amount of data for each class, it is evident, that this data set is imbalanced:
 
+
   
-  <p align="center"> <img src="readme_image/n_datapoints_outputclasses.png" alt="Logo" width="350" height="200"></a> 
+  <p align="center"> <img src="readme_image/n_datapoints_outputclasses.png" alt="Logo" width="400" height="250"></a> 
+  
 
 Thus, I also experimented with balancing the data set (see the commented-out lines in script) using the function balance_data(), but as this made performance even worse both for the baseline model (F1 = 0.22) and for the CNN (F1 = 0.15), I decided to leave this step out again. For the reference, classification reports for the balanced data set can also be found in the output folder. 
 The lower performance could be attributed to so many data points being filtered out when balancing with the number of the smallest class. One could possibly also experiment with a balancing method, with resampling of data points for the classes with fewer data points (also called upsampling). Another possible extension of this analysis would be to stratify the training and the testing data by the output classes, to ensure that the distribution of data points from each class was the same in the training and the test set.  
+
 Another interesting thing to look at would be to chunk the data points together in larger chunks, to avoid having data points that would only include a single word/sound like ‘uhm’. These very short sentences are likely to occur in the data set, as the data set consists in lines of spoken text. On the other end of the scale, there might also be long sequences of a single person speaking hundreds of words. Thus, the amount of information of a single data point can vary to a great extent, and accordingly the number of informative features that ends up in the training and the test set will also depend on how the random train/test split distributes the larger and the smaller sentences in the data set. 
 
 
