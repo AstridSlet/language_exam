@@ -21,7 +21,7 @@ An intuitive understanding of the n-gram model is as follows: Out of the times y
 Below is an illustration of how these word sequences look: 
 
 
-<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="1000" height="600"></a> 
+<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="600" height="400"></a> 
 
 
 Thus, the sentence ‘hold it and it holds your breath’ is made into a list of word indices (see the line just below). And the full line of word indices is then split into smaller sublists where one word (word-index) is added one by one to create a new sequence. If the model is good enough it can learn during model training to predict the next word index that is the most likely to be added to a sequence based on these word sequences. 
