@@ -61,10 +61,10 @@ def compute_coherence_values(dictionary, corpus, texts, limit, start=2, step=3):
     plt.xlabel("Num Topics")
     plt.ylabel("Coherence score")
     plt.legend(("coherence_values"), loc='best')
-    plt.savefig("out/topic_number_plot.jpg")
+    plt.savefig(os.path.join("..","output","topic_number_plot.jpg"))
     
     # define output name
-    outfile = os.path.join("out", "topic_number_coherence_val.txt")
+    outfile = os.path.join("..", "output", "topic_number_coherence_val.txt")
     
     # Print the coherence scores
     for m, cv in zip(x, coherence_values):
