@@ -21,7 +21,9 @@ An intuitive understanding of the n-gram model is as follows: Out of the times y
 Below is an illustration of how these word sequences look: 
 
 
-<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="600" height="400"></a> 
+
+<p align="center"> <img src="readme_images/input_sequences.png" alt="Logo" width="400" height="2500"></a> 
+
 
 
 Thus, the sentence ‘hold it and it holds your breath’ is made into a list of word indices (see the line just below). And the full line of word indices is then split into smaller sublists where one word (word-index) is added one by one to create a new sequence. If the model is good enough it can learn during model training to predict the next word index that is the most likely to be added to a sequence based on these word sequences. 
@@ -30,13 +32,13 @@ Thus, the sentence ‘hold it and it holds your breath’ is made into a list of
 After creating the words sequences, the sequences need to be padded with 0’s so the input data points to the model all have the same dimensions. Below is an illustration of how the sequences look when they are padded: 
 
 
-<p align="center"> <img src="readme_images/padding_seqs.png" alt="Logo" width="1000" height="200"></a> 
+<p align="center"> <img src="readme_images/padding_seqs.png" alt="Logo" width="800" height="200"></a> 
 
 4. Split sequences in X and Y and train model 
 When the sequences are padded in this way, where all the 0’s are added in the beginning, one can utilize the fact that the last word (to the very right) can be picked out using negative indexing. These numbers are the Y values of the model. The remainder indices (all the numbers to the left) can then be used as the X values. As described above, the model then has to learn that when seeing X (a series of words) the most likely next word is Y. It is these X- and Y- values that are fed to the model. 
 The model used to train the poem-generator is a convolutional neural network with an input layer, an embedding layer that learns an embedding for all of the words in the poem corpus, a LSTM layer with 150 nodes, which is well-suited for predicting time-series data like predicting the order of words in poems, and a dense output layer (n.nodes = n.words in index dictionary). The model architecture of each trained model is saved in the output folder. An example output can be seen here:
 
-<p align="center"> <img src="readme_images/model_architecture.png" alt="Logo" width="700" height="500"></a> 
+<p align="center"> <img src="readme_images/model_architecture.png" alt="Logo" width="500" height="300"></a> 
 
 5. Create poem
 When the model is trained, it can be used to generate new words when given a set of initiator words, from which it can predict the most likely next word. For this script I have used a list of words/word pairs that are commonly used to initiate sentences. These words are saved as a txt file in the utils folder (the original list can be found [_here_](https://owlcation.com/academia/Words-to-Use-in-Starting-Sentences)). Based on the number of lines the poem needs to have (specified by the user of the poem-generator) the script samples this number of sentence initiators and generates a poem line with a given number of words (also specified via command line). The generated poem is saved as a txt file in the output folder. 
